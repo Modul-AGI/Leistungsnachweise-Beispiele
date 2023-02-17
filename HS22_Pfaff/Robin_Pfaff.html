@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Robin Pfaff">
+
+<title>Reachability of charging stations compared to fuel stations in the Canton of Zurich</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+<script src="Semesterarbeit_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Semesterarbeit_files/libs/quarto-html/quarto.js"></script>
+<script src="Semesterarbeit_files/libs/quarto-html/popper.min.js"></script>
+<script src="Semesterarbeit_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Semesterarbeit_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Semesterarbeit_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Semesterarbeit_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Semesterarbeit_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Semesterarbeit_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Semesterarbeit_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="toc-section-number">1</span>  Introduction</a></li>
+  <li><a href="#method" id="toc-method" class="nav-link" data-scroll-target="#method"><span class="toc-section-number">2</span>  Method</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><span class="toc-section-number">3</span>  Results</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="toc-section-number">4</span>  Discussion</a></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Reachability of charging stations compared to fuel stations in the Canton of Zurich</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Robin Pfaff </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>HS22 BSc Environmental Engineering 2020 <br> Module Applied Geoinformatics</p>
+<section id="abstract" class="level4">
+<h4 class="anchored" data-anchor-id="abstract">Abstract</h4>
+<p>Plug-in electric vehicles (PEVs) have the potential to contribute to the achievement of climate policy goals. PEVs increased their market share on a yearly basis and will continue to do so. Therefore, development of adequate infrastructure is crucial. This work evaluates the current accessibility of charging stations based on travel time from the place of residence compared to fuel stations in the canton of Zurich. Analysis was carried out with Free and Open Source Software for Geoinformatics (FOSS4G). The presented method is built up in such a way that allows easy reproducibility for other regions if spatial population data is available or even analysis of other locations of interest. In the canton of Zurich, charging stations are less accessible than fuel stations. However, as PEV use requires different operations and shifts from public to private solutions, current accessibility is good.</p>
+</section>
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>To achieve climate policy goals, it is widely acknowledged that anthropogenic greenhouse gases (GHG) must be reduced. The current efforts of different branches of the economy are already measurable today. Every sector in Europe reduced their emissions compared to the level of 1990, except for the transport sector (<span class="citation" data-cites="jochem_assessing_2015">Jochem et al., <a href="#ref-jochem_assessing_2015" role="doc-biblioref">2015</a></span>). Plug-in electric vehicles (PEVs), which includes battery electric vehicles (BEVs) and plug in hybrid vehicles (PHEVs), are less polluting and more efficient compared to most internal combustion engine vehicles (ICEVs) (<span class="citation" data-cites="jochem_assessing_2015">Jochem et al., <a href="#ref-jochem_assessing_2015" role="doc-biblioref">2015</a></span>). Many manufacturers promise to fully shift production to EVs by 2035 at the latest (<span class="citation" data-cites="adac_wann_nodate">ADAC, <a href="#ref-adac_wann_nodate" role="doc-biblioref">n.d.</a></span>). In addition, the market share of EVs has been increasing in recent years. In Switzerland, 22.4 % of new registrations in 2021 were PEVs (<span class="citation" data-cites="vereinigung_schweizer_automobil-importeure_auto-schweiz_nodate">Vereinigung Schweizer Automobil-Importeure, <a href="#ref-vereinigung_schweizer_automobil-importeure_auto-schweiz_nodate" role="doc-biblioref">n.d.</a></span>). This requires an infrastructure that can handle these additional volumes (<span class="citation" data-cites="khan_comprehensive_2018">Khan et al., <a href="#ref-khan_comprehensive_2018" role="doc-biblioref">2018</a></span>). Therefore, this work investigates the current state of availability of charging station infrastructure compared to the network of fuel stations that has been built up over decades, by using Free and Open Source Software for Geoinformatics (FOSS4G).</p>
+</section>
+<section id="method" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Method</h1>
+<p>Analysis was carried out using python (version 3.10.8) in jupyter lab (version 3.5.1). All used data was converted to the Swiss coordinate reference system (CRS) CH1903+ / LV95. Following packages were used:</p>
+<ul>
+<li>warnings</li>
+<li>geopandas (version 0.12.2)</li>
+<li>pandas (version 1.5.2)</li>
+<li>matplotllib</li>
+<li>networkx (version 2.8.4)</li>
+<li>osmnx (version 1.3.0)</li>
+<li>numpy (version 1.24.1)</li>
+<li>scipy (version 1.10.0)</li>
+<li>shapely (version 2.0.0)</li>
+<li>gdal (version 3.6.2)</li>
+<li>ogr</li>
+<li>osr</li>
+<li>rasterio (version 1.3.4)</li>
+<li>rioxarray (version 0.13.3)</li>
+<li>math</li>
+<li>os</li>
+</ul>
+<div class="cell" data-tags="[]" data-execution_count="1">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>pd.options.mode.chained_assignment <span class="op">=</span> <span class="va">None</span> <span class="co">#supress pandas warning</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> networkx <span class="im">as</span> nx</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> osmnx <span class="im">as</span> ox</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> shapely</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> osgeo <span class="im">import</span> gdal, ogr, osr</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rioxarray <span class="im">as</span> rxr</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>) <span class="co">#supress warnings</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>For calculation of accessibility, three functions were created to I) generate isochrones, II) export the isochrones as GeoTIFF and III) combine the GeoTIFF with spatial population data.</p>
+<section id="i-isochrones" class="level5">
+<h5 class="anchored" data-anchor-id="i-isochrones"><strong>I) Isochrones</strong></h5>
+<p>Location of an amenity is retrieved and converted to point data. Each entry is then iterated for calculation of isochrones. For this, the closest network node is determined as the starting point. Maximum time extent for isochrones can be set as required. For nodes located in the isochrones of multiple charging or fuel stations, the shortest travel time is used followingly. Those nodes returning no results are removed for subsequent linear interpolation of travel times. For interpolation, initially an empty grid with the configured grid size is created. Then the scipy package is used for linear interpolation filling the grid with information. Finally, the resulting xyz arrays containing the shortest travel times are categorized into the desired intervals. The function also returns a data frame containing the shortest travel time to the chosen amenity.</p>
+<div class="cell" data-tags="[]" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create function to calculate travel times in df and interpolate them</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_shortest_travel_times(amenity,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                                    network_graph,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                                    country <span class="op">=</span> <span class="st">"Switzerland"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                                    state <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                                    city <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                                    max_trip_time <span class="op">=</span> <span class="dv">20</span>,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                                    max_expected_trip_time <span class="op">=</span> <span class="dv">40</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                                    interval <span class="op">=</span> <span class="dv">5</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                                    raster_size <span class="op">=</span> <span class="dv">25</span>):</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># create function for demanded raster size</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> round_to_raster_size(number, multiple):</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> multiple <span class="op">*</span> <span class="bu">round</span>(number <span class="op">/</span> multiple)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># download the amenities (e.g. charging stations and fuel stations)</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    place <span class="op">=</span> {<span class="st">"city"</span>: city, <span class="st">"state"</span>: state, <span class="st">"country"</span>: country}</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    geometries <span class="op">=</span> ox.geometries_from_place(place, {<span class="st">"amenity"</span>: [amenity]}).dropna(axis<span class="op">=</span><span class="dv">1</span>, how<span class="op">=</span><span class="st">"any"</span>).to_crs(<span class="st">"EPSG:2056"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    amenity <span class="op">=</span> geometries[geometries[<span class="st">"amenity"</span>] <span class="op">==</span> amenity]</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># convert polygon entries to points (by taking the centroid)</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    amenity[<span class="st">'geometry'</span>] <span class="op">=</span> amenity[<span class="st">'geometry'</span>].centroid</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="co">#transform graph to nodes and edges gdf</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    gdf_nodes <span class="op">=</span> ox.graph_to_gdfs(G, edges<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># add column x and y for input loop</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    amenity[<span class="st">"x"</span>] <span class="op">=</span> amenity.centroid.<span class="bu">map</span>(<span class="kw">lambda</span> p: p.x)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    amenity[<span class="st">"y"</span>] <span class="op">=</span> amenity.centroid.<span class="bu">map</span>(<span class="kw">lambda</span> p: p.y)</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate travel time from each charging station / fuel station to every node</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    trip_times <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1</span>,max_expected_trip_time<span class="op">+</span><span class="dv">1</span>))</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    list_all_node_times <span class="op">=</span> []</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span> (<span class="bu">len</span>(amenity)): <span class="co"># outer loop for every amenity</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        center_node <span class="op">=</span> ox.nearest_nodes(G,amenity.iloc[i][<span class="st">"x"</span>],amenity.iloc[i][<span class="st">"y"</span>])</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>        node_times <span class="op">=</span> {}</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> trip_time <span class="kw">in</span> <span class="bu">sorted</span>(trip_times, reverse<span class="op">=</span><span class="va">True</span>): <span class="co"># inner loop for travel time isochrones</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>            subgraph <span class="op">=</span> nx.ego_graph(G, center_node, radius<span class="op">=</span>trip_time, distance<span class="op">=</span><span class="st">"time"</span>)</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> node <span class="kw">in</span> subgraph.nodes():</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>                node_times[node] <span class="op">=</span> trip_time</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>        df_node_times <span class="op">=</span> pd.DataFrame([node_times]).transpose().rename_axis(<span class="st">'osmid'</span>)</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>        df_node_times <span class="op">=</span> gdf_nodes.join(df_node_times)</span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>        df_node_times <span class="op">=</span> df_node_times[df_node_times[<span class="dv">0</span>].notna()]</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>        df_node_times <span class="op">=</span> df_node_times.rename(columns <span class="op">=</span> {<span class="dv">0</span>: <span class="st">'trip_time'</span>})[[<span class="st">'x'</span>,<span class="st">'y'</span>,<span class="st">'trip_time'</span>]]</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>        list_all_node_times.append(df_node_times)</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># combining the list of dfs into one df</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    df_all_node_times <span class="op">=</span> pd.concat(list_all_node_times, join<span class="op">=</span><span class="st">'outer'</span>, axis<span class="op">=</span><span class="dv">1</span>).drop(columns<span class="op">=</span>[<span class="st">'x'</span>,<span class="st">'y'</span>])</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    <span class="co">#loop to extract shortes travel time</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    list_shortest_travel_time <span class="op">=</span> []</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span> (<span class="bu">len</span>(df_all_node_times)):</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>        shortest_travel_time <span class="op">=</span> df_all_node_times.iloc[i].<span class="bu">min</span>()</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>        list_shortest_travel_time.append(shortest_travel_time)</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>    <span class="co"># prepare and clean data for interpolation input into one dataframe </span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>    df_all_node_times[<span class="st">'shortest_travel_time'</span>] <span class="op">=</span> list_shortest_travel_time</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>    df_shortest_travel_time <span class="op">=</span> df_all_node_times.drop(columns<span class="op">=</span>[<span class="st">'trip_time'</span>])</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>    points_and_shortest_time <span class="op">=</span> [df_shortest_travel_time, gdf_nodes.iloc[:, <span class="dv">0</span>:<span class="dv">2</span>]]</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>    df_shortest_travel_time <span class="op">=</span> pd.concat(points_and_shortest_time, join<span class="op">=</span><span class="st">'outer'</span>, axis<span class="op">=</span><span class="dv">1</span>).dropna()</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>    <span class="co"># interpolate the points into raster</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> df_shortest_travel_time[<span class="st">'x'</span>]</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> df_shortest_travel_time[<span class="st">'y'</span>]</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>    z <span class="op">=</span> df_shortest_travel_time[<span class="st">'shortest_travel_time'</span>]</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>    x_min, x_max, y_min, y_max <span class="op">=</span> [df_shortest_travel_time.x.<span class="bu">min</span>()<span class="op">-</span><span class="dv">1000</span>, df_shortest_travel_time.x.<span class="bu">max</span>()<span class="op">+</span><span class="dv">1000</span>,</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>                                    df_shortest_travel_time.y.<span class="bu">min</span>()<span class="op">-</span><span class="dv">1000</span>, df_shortest_travel_time.y.<span class="bu">max</span>()<span class="op">+</span><span class="dv">1000</span>]</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>    X <span class="op">=</span> np.linspace(round_to_raster_size(x_min, raster_size), round_to_raster_size(x_max, raster_size),</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>                             <span class="bu">round</span>((round_to_raster_size(x_max, raster_size)<span class="op">-</span></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>                                    round_to_raster_size(x_min, raster_size))<span class="op">/</span>raster_size))</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>    Y <span class="op">=</span> np.linspace(round_to_raster_size(y_min, raster_size), round_to_raster_size(y_max, raster_size),</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>                             <span class="bu">round</span>((round_to_raster_size(y_max, raster_size)<span class="op">-</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>                                    round_to_raster_size(y_min, raster_size))<span class="op">/</span>raster_size))</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>    X, Y <span class="op">=</span> np.meshgrid(X, Y)  <span class="co"># 2D grid for interpolation</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>    interp <span class="op">=</span> scipy.interpolate.LinearNDInterpolator(<span class="bu">list</span>(<span class="bu">zip</span>(x, y)), z)</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> interp(X, Y)</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>    <span class="co"># categorize interpolated according to interval</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> np.ceil(Z <span class="op">/</span> interval)<span class="op">*</span>interval</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>    Z[Z <span class="op">&gt;</span> max_trip_time] <span class="op">=</span> max_trip_time</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> X,Y,Z, df_shortest_travel_time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="ii-export-geotiff" class="level5">
+<h5 class="anchored" data-anchor-id="ii-export-geotiff"><strong>II) export GeoTIFF</strong></h5>
+<p>These arrays are then converted to GeoTIFF format and exported. For this, the extent given by the x and y arrays are determined. Then the driver that defines the output format is set up. As in the precious step, a grid, which matches the arrays, is generated, and filled with the travel times. After defining the CRS, the GeoTIFF can finally be exported using the driver. NA values are automatically assigned the null value.</p>
+<div class="cell" data-execution_count="3">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># define function to create and export travel times as GeoTIFF</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># from (adapted): https://geonetcast.wordpress.com/2022/05/12/creating-a-geotiff-from-a-numpy-array/</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> export_tif_xyz(X,Y,Z, file_name):   </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> Z</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> getGeoTransform(extent, nlines, ncols):</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        resx <span class="op">=</span> (extent[<span class="dv">2</span>] <span class="op">-</span> extent[<span class="dv">0</span>]) <span class="op">/</span> ncols</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        resy <span class="op">=</span> (extent[<span class="dv">3</span>] <span class="op">-</span> extent[<span class="dv">1</span>]) <span class="op">/</span> nlines</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [extent[<span class="dv">0</span>], resx, <span class="dv">0</span>, extent[<span class="dv">3</span>] , <span class="dv">0</span>, <span class="op">-</span>resy]</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define the data extent (min. lon, min. lat, max. lon, max. lat)</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    extent <span class="op">=</span> [X.<span class="bu">min</span>(), Y.<span class="bu">max</span>(), X.<span class="bu">max</span>(), Y.<span class="bu">min</span>()] <span class="co"># South America</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">### Export the  array to GeoTIFF</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get GDAL driver GeoTiff</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    driver <span class="op">=</span> gdal.GetDriverByName(<span class="st">'GTiff'</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get dimensions</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    nlines <span class="op">=</span> data.shape[<span class="dv">0</span>]</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    ncols <span class="op">=</span> data.shape[<span class="dv">1</span>]</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    nbands <span class="op">=</span> <span class="bu">len</span>(data.shape)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    data_type <span class="op">=</span> gdal.GDT_Int16</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create a temp grid</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    grid_data <span class="op">=</span> driver.Create(<span class="st">'grid_data'</span>, ncols, nlines, <span class="dv">1</span>, data_type)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Write data for each bands</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    grid_data.GetRasterBand(<span class="dv">1</span>).WriteArray(data)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Spatial Reference System</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    srs <span class="op">=</span> osr.SpatialReference()</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Setup projection and geo-transform</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    grid_data.SetProjection(srs.ExportToWkt())</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    grid_data.SetGeoTransform(getGeoTransform(extent, nlines, ncols))</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save the file</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span> <span class="op">=</span> file_name</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    driver.CreateCopy(<span class="bu">file</span>, grid_data, <span class="dv">0</span>)  </span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Close the file</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    driver <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    grid_data <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Delete the temp grid               </span></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    os.remove(<span class="st">'grid_data'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="iii-calculate-raster-statistics" class="level5">
+<h5 class="anchored" data-anchor-id="iii-calculate-raster-statistics"><strong>III) calculate raster statistics</strong></h5>
+<p>This function requires two GeoTIFFs as an input. One is the previously generated GeoTIFF containing information about shortest travel times, the other spatial population data. The travel time is multiplied by 1000 and added to the number of residents living in the given raster cell. This results in a 5-digit number (format TTPPP), whereas TT contains the travel time and PPP information on population density. After converting the newly generated and combined GeoTIFFs to an arrays, they are looped to extract any raster cell value into one list. The list is then converted to a data frame and the TTPPP format is split to TT and PPP. Any row where the population is null is removed. Then the data frame is grouped based on the travel time interval (under 5, 5 to 10, 10 to 15, 15 to 20 or 20 plus minutes) and the percentage of population from each summed interval is calculated and returned.</p>
+<div class="cell" data-execution_count="4">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create function to calculate percentage of population within travel time intervals</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_statistics(amenity, population):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># raster calculator in fromat TTPPP (T = travel_time, P = Population)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    final <span class="op">=</span> amenity<span class="op">*</span><span class="dv">1000</span> <span class="op">+</span> population</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    final_array <span class="op">=</span> final.to_numpy()[<span class="dv">0</span>]</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">#extract all values</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    final_list <span class="op">=</span> []</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(final_array))):</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        subarray <span class="op">=</span> final_array[i]</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> r <span class="kw">in</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="bu">len</span>(subarray))):</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> math.isnan(subarray[r]) <span class="op">==</span> <span class="va">False</span>:</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                final_list.append(<span class="bu">round</span>(subarray[r].item()))</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># split the TTPPP code to extract </span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    final_df <span class="op">=</span> pd.DataFrame(final_list, columns<span class="op">=</span>[<span class="st">'TTPPP'</span>])</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    final_df[<span class="st">"asstring"</span>] <span class="op">=</span> final_df[<span class="st">'TTPPP'</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    final_df[<span class="st">'population'</span>] <span class="op">=</span> final_df[<span class="st">"asstring"</span>].<span class="bu">str</span>[<span class="op">-</span><span class="dv">3</span>:].astype(<span class="bu">int</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    final_df[<span class="st">'travel_time'</span>] <span class="op">=</span> final_df[<span class="st">"asstring"</span>].<span class="bu">str</span>[:<span class="op">-</span><span class="dv">3</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    final_df <span class="op">=</span> final_df.drop(columns<span class="op">=</span>[<span class="st">'TTPPP'</span>,<span class="st">'asstring'</span>])</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    final_df <span class="op">=</span> final_df[final_df.population <span class="op">&gt;</span> <span class="dv">0</span>] <span class="co">#delete al values wehre population is 0</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    population_total <span class="op">=</span> <span class="bu">sum</span>(final_df[<span class="st">'population'</span>])</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># categorize population by travel time</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    df_travel_time <span class="op">=</span> final_df.pivot(columns<span class="op">=</span><span class="st">'travel_time'</span>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    df_travel_time <span class="op">=</span> df_travel_time[<span class="st">'population'</span>]</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate_sum</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    population_5 <span class="op">=</span> df_travel_time[<span class="dv">5</span>].<span class="bu">sum</span>()</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    population_10 <span class="op">=</span> df_travel_time[<span class="dv">10</span>].<span class="bu">sum</span>()</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    population_15 <span class="op">=</span> df_travel_time[<span class="dv">15</span>].<span class="bu">sum</span>()</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    population_20 <span class="op">=</span> df_travel_time[<span class="dv">20</span>].<span class="bu">sum</span>()</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    population_20_plus <span class="op">=</span> df_travel_time[<span class="dv">25</span>].<span class="bu">sum</span>()</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># calculate percent of population with travel times</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    per_5 <span class="op">=</span> <span class="dv">100</span> <span class="op">/</span> population_total <span class="op">*</span> population_5</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    per_10 <span class="op">=</span> <span class="dv">100</span> <span class="op">/</span> population_total <span class="op">*</span> population_10</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    per_15 <span class="op">=</span> <span class="dv">100</span> <span class="op">/</span> population_total <span class="op">*</span> population_15</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    per_20 <span class="op">=</span> <span class="dv">100</span> <span class="op">/</span> population_total <span class="op">*</span> population_20</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    per_20_plus <span class="op">=</span> <span class="dv">100</span> <span class="op">/</span> population_total <span class="op">*</span> population_20_plus</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>    <span class="co">#print percentage within 5, 10, 15, 20 and more than 20 minutes travel time</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [per_5, per_10, per_15, per_20, per_20_plus]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="calculations" class="level5">
+<h5 class="anchored" data-anchor-id="calculations"><strong>calculations</strong></h5>
+<p>For the analysis, initially the location and the network type were defined. Then, the road network, as well as boundary polygon of the canton of Zurich were obtained and complemented with additional information on travel time for each edge. Subsequently, the network graphs were converted to the Swiss CRS. The previously generated functions were then used to calculate the accessibility of charging and fuel stations. When importing the GeoTIFFs, null values are changed to 25 as this represents the category of more than 20 minutes travel time and it mostly affects regions outside the Zurich cantonal borders, which are removed in the subsequent step when the GeoTIFFs are clipped to the boundary.</p>
+<div class="cell" data-execution_count="5">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">%%</span>capture <span class="op">--</span>no<span class="op">-</span>display</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>city <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>state <span class="op">=</span> <span class="st">"Zuerich"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>country <span class="op">=</span> <span class="st">"Switzerland"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>network_type <span class="op">=</span> <span class="st">"drive"</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># download the street network for graph</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>place <span class="op">=</span> {<span class="st">"city"</span>: city, <span class="st">"state"</span>: state, <span class="st">"country"</span>: country}</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> ox.graph_from_place(place, network_type<span class="op">=</span>network_type)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># impute missing edge speeds and add travel times</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> ox.add_edge_speeds(G)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> ox.add_edge_travel_times(G)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># transform to LV95</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> ox.project_graph(G, to_crs<span class="op">=</span> <span class="st">"EPSG:2056"</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># download boundary</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>gdf_boundary <span class="op">=</span> ox.geocode_to_gdf(place).dropna(axis<span class="op">=</span><span class="dv">1</span>, how<span class="op">=</span><span class="st">"any"</span>).to_crs(<span class="st">"EPSG:2056"</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>boundary_line <span class="op">=</span> gdf_boundary.iloc[<span class="dv">0</span>][<span class="st">"geometry"</span>]</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>boundary_1, boundary_2 <span class="op">=</span> boundary_line.exterior.xy</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>gdf_nodes <span class="op">=</span> ox.graph_to_gdfs(G, edges<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate travel times for charging stations</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>X_charging, Y_charging, Z_charging, df_charging <span class="op">=</span> calculate_shortest_travel_times(<span class="st">"charging_station"</span>, network_graph <span class="op">=</span> G, state <span class="op">=</span> state, city <span class="op">=</span> city,</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>                                                                                  max_trip_time<span class="op">=</span><span class="dv">20</span>, interval <span class="op">=</span> <span class="dv">5</span>, raster_size<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate travel times for fuel stations</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>X_fuel, Y_fuel, Z_fuel, df_fuel <span class="op">=</span> calculate_shortest_travel_times(<span class="st">"fuel"</span>, network_graph <span class="op">=</span> G, state <span class="op">=</span> state, city <span class="op">=</span> city,</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>                                                                  max_trip_time<span class="op">=</span><span class="dv">20</span>,interval <span class="op">=</span> <span class="dv">5</span>, raster_size<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># export tif travel times to charging stations</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>export_tif_xyz(X <span class="op">=</span> X_charging, Y <span class="op">=</span> Y_charging, Z <span class="op">=</span> Z_charging, file_name<span class="op">=</span><span class="st">'data/charging_raster.tif'</span>)</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a><span class="co"># export tif travel times to charging stations</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>export_tif_xyz(X <span class="op">=</span> X_fuel, Y <span class="op">=</span> Y_fuel, Z <span class="op">=</span> Z_fuel, file_name<span class="op">=</span><span class="st">'data/fuel_raster.tif'</span>)</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co">#define crop extent</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>crop_extent <span class="op">=</span> gdf_boundary[<span class="st">'geometry'</span>]</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="co"># import driving time</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>Charging <span class="op">=</span> rxr.open_rasterio(<span class="st">'data/charging_raster.tif'</span>).rio.write_crs(<span class="st">"EPSG:2056"</span>)</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>Charging <span class="op">=</span> Charging.where(Charging <span class="op">&gt;</span> <span class="dv">0</span>).fillna(<span class="dv">25</span>)</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>Charging_clipped <span class="op">=</span> Charging.fillna(<span class="dv">25</span>).rio.clip(crop_extent.geometry.<span class="bu">apply</span>(shapely.geometry.mapping))</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a><span class="co"># import fuel time</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>Fuel <span class="op">=</span> rxr.open_rasterio(<span class="st">'data/fuel_raster.tif'</span>).rio.write_crs(<span class="st">"EPSG:2056"</span>)</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>Fuel <span class="op">=</span> Fuel.where(Fuel <span class="op">&gt;</span> <span class="dv">0</span>).fillna(<span class="dv">25</span>)</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>Fuel_clipped <span class="op">=</span> Fuel.fillna(<span class="dv">25</span>).rio.clip(crop_extent.geometry.<span class="bu">apply</span>(shapely.geometry.mapping))</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="co"># import population</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>ZH_population <span class="op">=</span> rxr.open_rasterio(<span class="st">'data/ZH_Bevoelkerungsdichte.tif'</span>, masked <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>ZH_population <span class="op">=</span> ZH_population.where(ZH_population <span class="op">!=</span> <span class="op">-</span><span class="dv">999</span>).fillna(<span class="dv">0</span>)</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a><span class="co"># fill nan values with 0 and clip to boundary</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>ZH_population_clipped <span class="op">=</span> ZH_population.rio.clip(crop_extent.geometry.<span class="bu">apply</span>(shapely.geometry.mapping))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="data" class="level5">
+<h5 class="anchored" data-anchor-id="data"><strong>data</strong></h5>
+<p>The OSMnx package, with which the road network, as well as the spatial charging / fuel station data were obtained accesses OpenStreetMap Data (<span class="citation" data-cites="boeing_osmnx_2017">Boeing, <a href="#ref-boeing_osmnx_2017" role="doc-biblioref">2017</a></span>). Spatial population data was downloaded from <span class="citation" data-cites="noauthor_gis-browser_nodate"><em><span>GIS</span>-<span>Browser</span></em>, <a href="#ref-noauthor_gis-browser_nodate" role="doc-biblioref">n.d.</a></span> as shapefile and converted to a GeoTIFF raster with QGIS (version 3.22.14 LTR) and provided as supplementary information. Finally, the three functions were applied to generate the results.</p>
+</section>
+</section>
+<section id="results" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Results</h1>
+<p>Accessibility of charging stations is lower compared to fuel stations. More than twice as many Zurich residents are within a five-minute drive of a gas station (36.1%) when compared to charging stations (15.9%). Most of the people have a travel time from 5 to 10 minutes to reach a charging (37.4%) or a fuel station (45.9%). For both amenities, no resident has a travel time exceeding 20 minutes. A summary of all percentages is shown in <a href="#tbl-accpop">Table&nbsp;1</a>. Visualizations of shortest travel times to either a charging or a fuel station are shown in <a href="#fig-traveltimes">Figure&nbsp;1</a>.</p>
+<div class="cell" data-tags="[&quot;hide-input&quot;]" data-execution_count="16">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot travel times</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>travel_time_map, axs <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">30</span>,<span class="dv">10</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>Charging_clipped.plot(ax<span class="op">=</span>axs[<span class="dv">0</span>])</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].plot(boundary_1, boundary_2, c <span class="op">=</span> <span class="st">"black"</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].<span class="bu">set</span>(title<span class="op">=</span><span class="st">"charging stations"</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].set_axis_off()</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">0</span>].axis(<span class="st">"equal"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>Fuel_clipped.plot(ax<span class="op">=</span>axs[<span class="dv">1</span>])</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].plot(boundary_1, boundary_2, c <span class="op">=</span> <span class="st">"black"</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].<span class="bu">set</span>(title<span class="op">=</span><span class="st">"fuel stations"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].set_axis_off()</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">1</span>].axis(<span class="st">"equal"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>ZH_population_clipped.plot(ax<span class="op">=</span>axs[<span class="dv">2</span>])</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">2</span>].<span class="bu">set</span>(title<span class="op">=</span><span class="st">"Population canton of Zurich"</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">2</span>].plot(boundary_1, boundary_2, c <span class="op">=</span> <span class="st">"blue"</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">2</span>].set_axis_off()</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>axs[<span class="dv">2</span>].axis(<span class="st">"equal"</span>)</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-traveltimes" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="Semesterarbeit_files/figure-html/fig-traveltimes-output-1.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: left and center figures show travel times to charging / fuel stations in minutes and right figure shows population per hectare</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="12">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate percantage of population which is in 5, 10, 15, 20 or 20plus minutes at a charging station</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>charging_statistics <span class="op">=</span> get_statistics(amenity<span class="op">=</span>Charging, population<span class="op">=</span>ZH_population_clipped)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate percantage of population which is in 5, 10, 15, 20 or 20plus minutes at a fuel station</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>fuel_statistics <span class="op">=</span> get_statistics(amenity<span class="op">=</span>Fuel, population<span class="op">=</span>ZH_population_clipped)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>accessibility <span class="op">=</span> [<span class="st">"&lt; 5 min"</span>, <span class="st">"5 to 10 min"</span>, <span class="st">"10 to 15 min"</span>, <span class="st">"15 to 20 min"</span>, <span class="st">"&gt; 20 min"</span>]</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> pd.DataFrame(</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    {<span class="st">'accessibility'</span>: accessibility,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'charging station'</span>: charging_statistics,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>     <span class="st">'fuel station'</span>: fuel_statistics</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># define appearance of data frame</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>headers <span class="op">=</span> {</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"selector"</span>: <span class="st">"th:not(.index_name)"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"props"</span>: <span class="st">"background-color: #0B4360; color: white; text-align: center"</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>cell_hover <span class="op">=</span> {</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"selector"</span>: <span class="st">"td:hover"</span>,</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"props"</span>: [(<span class="st">"background-color"</span>, <span class="st">"#75B6D9"</span>)]</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>properties <span class="op">=</span> {<span class="st">"border"</span>: <span class="st">"1px solid black"</span>, <span class="st">"width"</span>: <span class="st">"240px"</span>, <span class="st">"height"</span>: <span class="st">"25px"</span>, <span class="st">"text-align"</span>: <span class="st">"center"</span>}</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>results.style.hide(axis<span class="op">=</span><span class="st">"index"</span>).set_properties(<span class="op">**</span>properties).set_table_styles([headers, cell_hover]).<span class="bu">format</span>({</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"charging station"</span>: <span class="st">"</span><span class="sc">{:.1f}</span><span class="st"> %"</span>,</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fuel station"</span>: <span class="st">"</span><span class="sc">{:.1f}</span><span class="st"> %"</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<div id="tbl-accpop" class="anchored">
+
+<style type="text/css">
+#T_45967 th:not(.index_name) {
+  background-color: #0B4360;
+  color: white;
+  text-align: center;
+}
+#T_45967 td:hover {
+  background-color: #75B6D9;
+}
+#T_45967_row0_col0, #T_45967_row0_col1, #T_45967_row0_col2, #T_45967_row1_col0, #T_45967_row1_col1, #T_45967_row1_col2, #T_45967_row2_col0, #T_45967_row2_col1, #T_45967_row2_col2, #T_45967_row3_col0, #T_45967_row3_col1, #T_45967_row3_col2, #T_45967_row4_col0, #T_45967_row4_col1, #T_45967_row4_col2 {
+  border: 1px solid black;
+  width: 240px;
+  height: 25px;
+  text-align: center;
+}
+</style>
+<table id="T_45967"><caption>Table&nbsp;1:  accessibility of charging / fuel stations for population in the canton of Zurich </caption>
+  <thead>
+    <tr>
+      <th id="T_45967_level0_col0" class="col_heading level0 col0">accessibility</th>
+      <th id="T_45967_level0_col1" class="col_heading level0 col1">charging station</th>
+      <th id="T_45967_level0_col2" class="col_heading level0 col2">fuel station</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_45967_row0_col0" class="data row0 col0">&lt; 5 min</td>
+      <td id="T_45967_row0_col1" class="data row0 col1">15.9 %</td>
+      <td id="T_45967_row0_col2" class="data row0 col2">36.1 %</td>
+    </tr>
+    <tr>
+      <td id="T_45967_row1_col0" class="data row1 col0">5 to 10 min</td>
+      <td id="T_45967_row1_col1" class="data row1 col1">37.4 %</td>
+      <td id="T_45967_row1_col2" class="data row1 col2">45.9 %</td>
+    </tr>
+    <tr>
+      <td id="T_45967_row2_col0" class="data row2 col0">10 to 15 min</td>
+      <td id="T_45967_row2_col1" class="data row2 col1">30.4 %</td>
+      <td id="T_45967_row2_col2" class="data row2 col2">15.5 %</td>
+    </tr>
+    <tr>
+      <td id="T_45967_row3_col0" class="data row3 col0">15 to 20 min</td>
+      <td id="T_45967_row3_col1" class="data row3 col1">16.3 %</td>
+      <td id="T_45967_row3_col2" class="data row3 col2">2.6 %</td>
+    </tr>
+    <tr>
+      <td id="T_45967_row4_col0" class="data row4 col0">&gt; 20 min</td>
+      <td id="T_45967_row4_col1" class="data row4 col1">0.0 %</td>
+      <td id="T_45967_row4_col2" class="data row4 col2">0.0 %</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="discussion" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Discussion</h1>
+<section id="code" class="level5">
+<h5 class="anchored" data-anchor-id="code"><strong>Code</strong></h5>
+<p>For calculation of travel times, the spatially nearest node from the network to the point data of the charging/fuel station is identified. This nearest node is then taken as the starting point for travel time calculations. However, this leads to certain locations being assigned to the wrong network sections. For example, a charging station located at a highway service area is falsely connected to a node on a country road next to the highway, which means that population living close to this location are incorrectly assigned a short travel time.</p>
+<p>Travel times for population at the border to other cantons are not accurate, as the nearest charging or fuel station could be across the border outside the canton of Zurich. Even though travel times for border regions are in some areas to high, this can be neglected, as it only affects a fraction compared to the whole area and both, fuel and charging stations, are subject to this bias.</p>
+<p>Maximum expected travel time for isochrones was set to 40 minutes, as this ensures in a developed area as the canton of Zurich, that any node is covered. Falsely categorized nodes which were not accessible (e.g.&nbsp;dead ends with falsely classified one-way roads) could therefore be ignored for subsequent calculations. However, if the code is to be used for analyses in more rural areas, the maximum expected travel time for isochrones must be increased.</p>
+</section>
+<section id="data-1" class="level5">
+<h5 class="anchored" data-anchor-id="data-1"><strong>Data</strong></h5>
+<p>Due to data protection, grid cells in which three or fewer residents live are not listed at the correct location, but at the location of the respective municipal office (<span class="citation" data-cites="statistisches_amt_kanton_zurich_dokumentationen_2020">Statistisches Amt Kanton Zürich, <a href="#ref-statistisches_amt_kanton_zurich_dokumentationen_2020" role="doc-biblioref">2020</a></span>). As this concerns only areas with little population, results are only minimally affected and again, both, charging and fuel stations, are subject to this problem.</p>
+</section>
+<section id="foss4g-compared-to-proprietary-gis-solutions" class="level5">
+<h5 class="anchored" data-anchor-id="foss4g-compared-to-proprietary-gis-solutions"><strong>FOSS4G compared to proprietary GIS solutions</strong></h5>
+<p>Proprietary GIS software such as ArcGIS or Geomedia provide a user-friendly graphical user interface (GUI). This makes it easily accessible for inexperienced users. However, these programs are expensive. Furthermore, some tools may not be available and, in most cases, cannot be added since the developers have absolute authority over the program (<span class="citation" data-cites="brovelli_free_2012">Brovelli et al., <a href="#ref-brovelli_free_2012" role="doc-biblioref">2012</a></span>). FOSS4G on the other hand overcome these issues, as source code is usually published under free and open-source license (<span class="citation" data-cites="brovelli_free_2012">Brovelli et al., <a href="#ref-brovelli_free_2012" role="doc-biblioref">2012</a></span>). Furthermore, reproducibility of results and quality assessment of methods are greatly assisted by full access to the underlying algorithms (<span class="citation" data-cites="brovelli_free_2012">Brovelli et al., <a href="#ref-brovelli_free_2012" role="doc-biblioref">2012</a></span>). One of the biggest advantages of FOSS4G is the ability to handle repetitive tasks very efficient. However, the use of FOSS4G requires a basic knowledge of programming, which makes it difficult for inexperienced users. This means, that for simple spatial analysis proprietary GIS solutions are a valid choice, however for advanced, repetitive tasks FOSS4G is the advantageous solution. To solely analyze accessibility of charging and fuel stations in the canton of Zurich, an approach with a proprietary GIS solution would have been more time efficient. However, the chosen method presents a solution which could be applied for any location, given spatial population data is available. Furthermore, the method can not only be applied on charging or fuel stations, but any data provided by open street map. For example, accessibility of hospitals, supermarkets, or sport facilities. In addition, not only the accessibility by car, but also by bicycle or on foot can be calculated depending on the specified network. This emphasizes the advantages of FOSS4G when working on iterative tasks.</p>
+</section>
+<section id="conclusions" class="level5">
+<h5 class="anchored" data-anchor-id="conclusions"><strong>Conclusions</strong></h5>
+<p>With less than 10% of all charging processes carried out at public charging stations, this option is only third choice behind private charging (50-80%) and charging at work (15-25%) (<span class="citation" data-cites="hardman_review_2018">Hardman et al., <a href="#ref-hardman_review_2018" role="doc-biblioref">2018</a></span>). The current expansion can therefore be considered sufficient, taking into account these different user habits. Hence, to further promote e-mobility, the expansion of charging options in private spaces is much more essential. Nonetheless, a well-developed charging infrastructure can encourage more consumers to buy PEVs (<span class="citation" data-cites="hardman_review_2018">Hardman et al., <a href="#ref-hardman_review_2018" role="doc-biblioref">2018</a></span>), which suggests that the expansion of the charging station infrastructure should be continued in the canton of Zurich.</p>
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-adac_wann_nodate" class="csl-entry" role="doc-biblioentry">
+ADAC. (n.d.). <em>Wann wird welcher <span>Hersteller</span> elektrisch?</em> Retrieved January 17, 2023, from <a href="https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/auto/ausstieg-verbrennungsmotor/">https://www.adac.de/rund-ums-fahrzeug/autokatalog/marken-modelle/auto/ausstieg-verbrennungsmotor/</a>
+</div>
+<div id="ref-boeing_osmnx_2017" class="csl-entry" role="doc-biblioentry">
+Boeing, G. (2017). <em><span>OSMnx</span>: <span>A</span> <span>Python</span> package to work with graph-theoretic <span>OpenStreetMap</span> street networks</em>. <a href="https://doi.org/DOI:10.21105/joss.00215">https://doi.org/DOI:10.21105/joss.00215</a>
+</div>
+<div id="ref-brovelli_free_2012" class="csl-entry" role="doc-biblioentry">
+Brovelli, M. A., Mitasova, H., Neteler, M., &amp; Raghavan, V. (2012). Free and open source desktop and <span>Web</span> <span>GIS</span> solutions. <em>Applied Geomatics</em>, <em>4</em>(2), 65–66. <a href="https://doi.org/10.1007/s12518-012-0082-4">https://doi.org/10.1007/s12518-012-0082-4</a>
+</div>
+<div id="ref-noauthor_gis-browser_nodate" class="csl-entry" role="doc-biblioentry">
+<em><span>GIS</span>-<span>Browser</span></em>. (n.d.). Retrieved January 17, 2023, from <a href="http://maps.zh.ch/?topic=StatBevZH">http://maps.zh.ch/?topic=StatBevZH</a>
+</div>
+<div id="ref-hardman_review_2018" class="csl-entry" role="doc-biblioentry">
+Hardman, S., Jenn, A., Tal, G., Axsen, J., Beard, G., Daina, N., Figenbaum, E., Jakobsson, N., Jochem, P., Kinnear, N., Plötz, P., Pontes, J., Refa, N., Sprei, F., Turrentine, T., &amp; Witkamp, B. (2018). A review of consumer preferences of and interactions with electric vehicle charging infrastructure. <em>Transportation Research Part D: Transport and Environment</em>, <em>62</em>, 508–523. <a href="https://doi.org/10.1016/j.trd.2018.04.002">https://doi.org/10.1016/j.trd.2018.04.002</a>
+</div>
+<div id="ref-jochem_assessing_2015" class="csl-entry" role="doc-biblioentry">
+Jochem, P., Babrowski, S., &amp; Fichtner, W. (2015). Assessing <span>CO2</span> emissions of electric vehicles in <span>Germany</span> in 2030. <em>Transportation Research Part A: Policy and Practice</em>, <em>78</em>, 68–83. <a href="https://doi.org/10.1016/j.tra.2015.05.007">https://doi.org/10.1016/j.tra.2015.05.007</a>
+</div>
+<div id="ref-khan_comprehensive_2018" class="csl-entry" role="doc-biblioentry">
+Khan, W., Ahmad, A., Ahmad, F., &amp; Saad Alam, M. (2018). A <span>Comprehensive</span> <span>Review</span> of <span>Fast</span> <span>Charging</span> <span>Infrastructure</span> for <span>Electric</span> <span>Vehicles</span>. <em>Smart Science</em>, 1–15. <a href="https://doi.org/10.1080/23080477.2018.1437323">https://doi.org/10.1080/23080477.2018.1437323</a>
+</div>
+<div id="ref-statistisches_amt_kanton_zurich_dokumentationen_2020" class="csl-entry" role="doc-biblioentry">
+Statistisches Amt Kanton Zürich. (2020). <em>Dokumentationen für die <span>Karten</span> <span>Bevölkerungsstatistik</span>, <span>Beschäftigtenstatistik</span> und <span>Gebäudestatistik</span></em>. <a href="http://www.web.statistik.zh.ch/documentation/BevBesGebStatistik.pdf">http://www.web.statistik.zh.ch/documentation/BevBesGebStatistik.pdf</a>
+</div>
+<div id="ref-vereinigung_schweizer_automobil-importeure_auto-schweiz_nodate" class="csl-entry" role="doc-biblioentry">
+Vereinigung Schweizer Automobil-Importeure. (n.d.). <em>Auto-schweiz</em>. Retrieved January 17, 2023, from <a href="https://www.auto.swiss/#statistics">https://www.auto.swiss/#statistics</a>
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+<script src="Semesterarbeit_files/libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
